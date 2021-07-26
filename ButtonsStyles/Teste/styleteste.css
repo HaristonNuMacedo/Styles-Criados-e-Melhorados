@@ -1,0 +1,91 @@
+body {
+	background: #e3e3e3;
+	font-family: sans-serif;
+	width: 400px;
+	margin: 100px auto;
+}
+
+a {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: block;
+	
+	border-right: 30px solid red;
+	border-bottom: 30px solid #4c4c4c; 
+}
+
+
+a {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: block;
+	
+	border-right: 30px solid red;
+	border-bottom: 30px solid #4c4c4c;
+
+   height: 0;
+}
+
+
+a {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: block;
+	
+	border-right: 30px solid red;
+	border-bottom: 30px solid #4c4c4c; 
+	
+	height: 0;
+	line-height: 50px;
+}
+
+
+
+a {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: block;
+	
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid #4c4c4c; 
+	
+	height: 0;
+	line-height: 50px;
+}
+
+
+a {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: inline-block;
+	
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid #4c4c4c; 
+	
+	height: 0;
+	line-height: 50px;
+}
+
+
+div {
+    border: 1px solid #4c4c4c;	
+    border-top: 3px solid #4c4c4c;	   	 
+    padding: 20px;
+}
+
+
+@media screen and (-webkit-animation) {
+	a {
+		margin-bottom: -4px;
+	}
+}

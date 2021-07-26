@@ -1,0 +1,130 @@
+<!DOCTYPE html> 
+ 
+<html lang="pt-br"> 
+<head> 
+   <meta charset="utf-8"> 
+   <title>Demo</title> 
+   <link rel="stylesheet" href="">
+</head> 
+
+    <style>
+
+        body{
+            background-color: #656565;
+        }
+
+        #octogono { 
+            width: 356px; 
+            height: 150px; 
+            background: transparent; 
+            position: relative; 
+            border: 1px solid transparent;
+        } 
+
+        #octogono span:nth-child(1){
+            content:'';
+            position:absolute;
+            top:0;
+            right: 0px;;
+            width: 91%;
+            height: 79.2%;
+            border-top: 1px solid #fff;
+            border-right: 1px solid #fff;
+
+            transform: rotate(0deg);
+            transition:.05s;
+        }
+
+        #octogono :hover span:nth-child(1){
+            width: 99.7%;
+            height: 99%;
+        }
+
+        #octogono span:nth-child(2){
+            content:'';
+            position:absolute;
+            bottom:0;
+            left: 0px;;
+            width: 91%;
+            height: 79.2%;
+            border-bottom: 1px solid #fff;
+            border-left: 1px solid #fff;
+
+            transform: rotate(0deg);
+            transition: .05s;
+        }
+
+        #octogono :hover span:nth-child(2){
+            width: 99.7%;
+            height: 99%;
+        }
+        
+        #octogono span:nth-child(3){
+            content:'';
+            position:absolute;
+            top: 0px;
+            left: 0px;;
+            width: 30px;
+            height: 30px;
+            border-top: 1px solid #fff;
+            border-left: 1px solid #fff;
+
+            transform: rotate(180deg);
+            transition:.25s;
+        }
+
+        #octogono :hover span:nth-child(3){
+            border-top: 0px solid #fff;
+            border-left: 0px solid #fff;
+            width: 0px;
+            height: 0px;
+        }
+        
+        #octogono span:nth-child(4){
+            content:'';
+            position:absolute;
+            bottom: 0px;
+            right: 0px;;
+            width: 30px;
+            height: 30px;
+            border-bottom: 1px solid #fff;
+            border-right: 1px solid #fff;
+
+            transform: rotate(180deg);
+            transition:.25s;
+        }
+
+        #octogono :hover span:nth-child(4){
+            width: 0%;
+            height: 0%;
+        }
+
+        .BlaBla {
+            margin-top: 8px;
+            margin-left: 8px;   
+            background-color: rgb(8, 7, 92);
+            width: 338px;
+            padding-top: 49px;
+            padding-bottom: 50px;
+        
+        }
+
+
+        .BlaBla a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 30px;
+            margin-left: 50px;
+
+        }
+    </style>
+<body> 
+
+    <div id="octogono">
+        <div class="BlaBla"><span></span> <span></span> <span></span> <span></span>
+            <a href="#">Testiando o Teste</a>
+        </div>
+    </div>
+
+</body> 
+</html>

@@ -1,0 +1,41 @@
+@media screen and (min-width: 1440px){
+
+    body {
+        background: linear-gradient(90deg, #f5ed00 27.5%, #afaa0b 31%);
+    }
+
+    nav{
+        width: 444px;
+    }
+
+    .BackHomeMenu {
+        width: 1160px;
+    }
+    
+    .BackEndMenu {
+        width: 1165px;
+    }
+
+    .formLogin {
+        top: 23%;
+    }
+
+    .ConfirmAction{
+        left: 85px;
+    }
+  
+    .ConfirmAction2{
+      left: 85px;
+    }
+
+    .LocalForm{
+        position: absolute;
+        width: 750px;
+        right: 185px;
+    }
+
+    .form-check-input{
+        top: 8px; 
+    }
+
+} 

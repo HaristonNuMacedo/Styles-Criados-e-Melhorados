@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seleção Multipla_SwitchCase</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8"/>
+</head>
+<body>
+
+    <form name="formcalend" action="" method="POST">
+        Digite o m&ecirc;s (01 a 12): <input type="text" name="f_mes" size="4" maxlength="2" /><p></p>
+        <input type="button" name="btn_processar" value="Processar" onclick="verificaMes()"/>
+        <input type="reset" name="btn_cancelar" value="Cancelar"/><p></p>
+        O M&ecirc;s correspondente &eacute;: <input type="text" name="f_nomeMes" size="18" maxlength="15" />
+    </form>
+
+    <script lang="javascript">
+
+        var js_mes;
+
+        function verificaMes() {
+            js_mes = parseInt(document.formcalend.f_mes.value);
+
+            switch (js_mes) {
+                case 1: document.formcalend.f_nomeMes.value = 'Janeiro'; break;
+                case 2: document.formcalend.f_nomeMes.value = 'Fevereiro'; break;
+                case 3: document.formcalend.f_nomeMes.value = 'Março'; break;
+                case 4: document.formcalend.f_nomeMes.value = 'Abril'; break;
+                case 5: document.formcalend.f_nomeMes.value = 'Maio'; break;
+                case 6: document.formcalend.f_nomeMes.value = 'Junho'; break;
+                case 7: document.formcalend.f_nomeMes.value = 'Julho'; break;
+                case 8: document.formcalend.f_nomeMes.value = 'Agosto'; break;
+                case 9: document.formcalend.f_nomeMes.value = 'Setembro'; break;
+                case 10: document.formcalend.f_nomeMes.value = 'Outubro'; break;
+                case 11: document.formcalend.f_nomeMes.value = 'Novembro'; break;
+                case 12: document.formcalend.f_nomeMes.value = 'Dezembro'; break;
+
+                default: document.formcalend.f_nomeMes.value = '** M\u00eas Inv\u00e1lido! **'; break;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
