@@ -64,10 +64,6 @@
         <div class="PainelAG">
             <div class="conteudo">
                 <div class="calendario">
-                    <div class="header">
-                        <a class="btn-ant" id="btn_ant"><</a>
-                        <a class="btn-pro" id="btn_prev">></a>
-                    </div>
 
                     <div class="calendar disable-selection" id="calendar">
                         <div class="left-side">
@@ -76,12 +72,13 @@
                                 <div class="calendar-left-side-day-of-week"></div>
                             </div>
                             <div class="current-day-events">
-                                <div>Feriados:</div>
+                                <div style="font-weight: 600; font-size: 18px;">Status do Clinte:</div>
                                 <ul class="current-day-events-list"></ul>
                             </div>
                             <div class="add-event-day">
-                                <input type="text" class="add-event-day-field" placeholder="Create an Event">
-                                <span class="fa fa-plus-circle cursor-pointer add-event-day-field-btn"></span>
+                                <span type="" class="add-event-day-field" placeholder=""></span>
+                                <button type="button" class="fa cursor-pointer add-event-day-field-btn" id="Modalagenda"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Agende-se Aqui!!</button>
                             </div>
                         </div>
                         <div class="right-side">
@@ -104,7 +101,6 @@
                         </div>
                     </div>
                     
-                    <script async src="scripts/all.js"></script>
 
                             <!-- Modal para Cadstrar -->
                             <div class="modal" id="exampleModal" tabindex="-1"
@@ -131,7 +127,11 @@
                                                                 
                                                                     <div class="row">
                                                                     <div class="col-md-6">
-                                                                    
+                                                                        <script src="Js/Calendario.js"></script>
+                                                                        <div class="current-day text-center">
+                                                                            <h1 class="calendar-left-side-day" style="color: black;"></h1>
+                                                                            <div class="calendar-left-side-day-of-week"></div>
+                                                                        </div>
                                                                     <label><strong>Nome Completo</strong></label>  
                                                                     <input class="form-control" type="text" 
                                                                            name="nome" value="">
