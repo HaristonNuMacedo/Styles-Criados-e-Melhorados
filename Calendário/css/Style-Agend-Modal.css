@@ -30,6 +30,7 @@ select.form-control {
     color: white;
     font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 
