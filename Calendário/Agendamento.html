@@ -72,7 +72,7 @@
                                 <div class="calendar-left-side-day-of-week"></div>
                             </div>
                             <div class="current-day-events">
-                                <div style="font-weight: 600; font-size: 18px;">Status do Clinte:</div>
+                                <div style="font-weight: 600; font-size: 18px;">Pesquisar status do Clinte:</div>
                                 <ul class="current-day-events-list"></ul>
                             </div>
                             <div class="add-event-day">
@@ -119,40 +119,52 @@
                                                 <div class="card-header tituloAgend">
                                                             Escolha o serviço desejado
                                                 </div><br>
+                    
                                             <div class="col-12 " style="margin-bottom: 25px;">
                                                     <div class="card-header text-start text-dark" 
                                                         style="background-color: rgb(255, 255, 255);">
                                                         
                                                     <div class="row" style="background-color: rgb(255, 255, 255);">
-                                                        <div class="col-md-4">
-                                                            <img width="100%" height="250" style="border: 1px solid black;">
+                                                        <div class="col-md-3">
+                                                            <img width="100%" height="180" src="img/corteMasculino.jpg" style="border: 1px solid black;">
                                                             <div>
                                                                 <label><strong>Corte Masculino</strong></label>  
                                                                 <select name="cor" class="form-control">
-                                                                    <option>[--Selecione--]</option>
+                                                                    <option>[--Nenhum Serviço--]</option>
                                                                     <option name="cor">Branco(a)</option>
                                                                     <option name="cor">Negro(a)</option>
                                                                     <option name="cor">Pardo(a)</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <img width="100%" height="250" style="border: 1px solid black;">
+                                                        <div class="col-md-3">
+                                                            <img width="100%" height="180" src="img/como-aparar-a-barba-02.jpg" style="border: 1px solid black;">
                                                             <div>
                                                                 <label><strong>Barba Masculino</strong></label>  
                                                                 <select name="Perfil" class="form-control">
-                                                                    <option>[--Selecione--]</option>
+                                                                    <option>[--Nenhum Serviço--]</option>
                                                                     <option name="Perfil">Cliente</option>
                                                                     <option name="Perfil">Funcionário</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                            <img width="100%" height="250" style="border: 1px solid black;">
+                                                        <div class="col-md-3">
+                                                            <img width="100%" height="180" src="img/corteFeminino.jpg" style="border: 1px solid black;">
+                                                            <div>
+                                                                <label><strong>Cabelo Feminino</strong></label>  
+                                                                <select name="Perfil" class="form-control">
+                                                                    <option>[--Nenhum Serviço--]</option>
+                                                                    <option name="Perfil">Cliente</option>
+                                                                    <option name="Perfil">Funcionário</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <img width="100%" height="180" src="img/manicure-de-sucesso.jpg" style="border: 1px solid black;">
                                                             <div>
                                                                 <label><strong>Manicure Feminino</strong></label>  
                                                                 <select name="Perfil" class="form-control">
-                                                                    <option>[--Selecione--]</option>
+                                                                    <option>[--Nenhum Serviço--]</option>
                                                                     <option name="Perfil">Cliente</option>
                                                                     <option name="Perfil">Funcionário</option>
                                                                 </select>
@@ -163,7 +175,7 @@
                                             </div>
                                             
                                         <div class="modal-footer" >
-                                            <button type="submit" name="excluir" class="btn btn-primary" style="margin-right: 20px;">Enviar</button>
+                                            <button type="submit" name="excluir" id="enviar" class="btn btn-primary" style="margin-right: 20px;">Enviar</button>
                                             <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-right: 20px;">Cancelar</button>
                                             <input type="reset" class="btn btn-dark btInput" name="limpar" value="Limpar">
                                         </div>

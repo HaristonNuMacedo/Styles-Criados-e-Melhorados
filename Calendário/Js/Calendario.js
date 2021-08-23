@@ -11,7 +11,7 @@ class CALENDAR {
             year: this.getFirstElementInsideIdByClassName('calendar-current-year'),
             eventList: this.getFirstElementInsideIdByClassName('current-day-events-list'),
             eventField: this.getFirstElementInsideIdByClassName('add-event-day-field'),
-            eventAddBtn: this.getFirstElementInsideIdByClassName('add-event-day-field-btn'),
+            eventAddBtn: this.getFirstElementInsideIdByClassName('btn-Enviar'),
             currentDay: this.getFirstElementInsideIdByClassName('calendar-left-side-day'),
             currentWeekDay: this.getFirstElementInsideIdByClassName('calendar-left-side-day-of-week'),
             prevYear: this.getFirstElementInsideIdByClassName('calendar-change-year-slider-prev'),
@@ -20,8 +20,8 @@ class CALENDAR {
             // CHAMAR O DIA NA MODAL DO CADASTRO!!
             diaEscolhido: this.getFirstElementInsideIdByClassName('calendar-event-year-day')
         };
-
-        this.eventList = JSON.parse(localStorage.getItem(localStorageName)) || {};
+        
+        this.eventList = 'Agendamento Realizado' || {};
 
         this.date = +new Date();
         this.options.maxDays = 42;
@@ -51,8 +51,9 @@ class CALENDAR {
         let calendar = this.getCalendar();
         let eventList = this.eventList[calendar.active.formatted] || ['Sem agendamento'];
         let eventTemplate = "";
+        
         eventList.forEach(item => {
-            eventTemplate += `<li>${item}</li>`;
+            eventTemplate += `<li>${item}</li>`; //CHAMAR O BANCO DE DADOS PARA CHAMAR AQUI!!
         });
 
         this.elements.eventList.innerHTML = eventTemplate;
