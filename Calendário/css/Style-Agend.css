@@ -323,7 +323,7 @@ font-size: 18px;
 
 
 .efeito-btn {
-color: rgb(150, 20, 20);
+color: rgb(0, 0, 0);
 transition: all 0.5s;
 position: relative;
 margin-right: 15px;
@@ -350,7 +350,7 @@ left: 0;
 width: 100%;
 height: 100%;
 z-index: 1;
-background-color: rgba(119, 2, 2, 0.2);
+background-color: rgba(0, 0, 0, 0.2);
 /*background-color: #ff0157;*/
 transition: all 0.3s;
 
