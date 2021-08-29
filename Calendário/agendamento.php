@@ -1,3 +1,13 @@
+<?php
+include_once 'C:/xampp/htdocs/TesteAgend/controller/testeController.php';
+include_once 'C:/xampp/htdocs/TesteAgend/dao/daoTeste.php';
+include_once 'C:/xampp/htdocs/TesteAgend/model/teste.php';
+include_once 'C:/xampp/htdocs/TesteAgend/model/mensagem.php';
+
+$msg = new Mensagem();
+$dt = new Teste();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -60,6 +70,20 @@
         </ul>
     </header>
 
+    <?php
+        if (isset($_POST['enviar'])) {
+            $dataA = $_POST['data_agendamento'];
+            echo " :"+$_POST['data_agendamento'];
+            if ($dataA != "") {
+                $dts = new TesteController();
+                unset($_POST['enviar']);
+                $msg = $dts->inserirData($dataA);
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
+                    URL='http://localhost/TesteAgend/agendamento.php'\">";
+            }
+        }
+    ?>
+
     <div style="background-color: #333; position: relative; width: 100%; height: 100px;"></div>
     <section class="agenda" id="agenda">
         <h2 class="titleText"><span>A</span>gendamento</h2>
@@ -75,13 +99,13 @@
                                 <div class="calendar-left-side-day-of-week"></div>
                             </div>
                             <div class="current-day-events">
-                                <div style="font-weight: 600; font-size: 18px;">Pesquisar status do Clinte:</div>
+                                <div>Pesquisar status do Clinte:</div>
                                 <ul class="current-day-events-list"></ul>
                             </div>
                             <div class="add-event-day">
                                 <span type="" class="add-event-day-field" placeholder=""></span>
                                 <button type="button" class="fa cursor-pointer add-event-day-field-btn" id="Modalagenda"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Agende-se Aqui!!</button>
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Agende Aqui!</button>
                             </div>
                         </div>
                         <div class="right-side">
@@ -237,7 +261,7 @@
                                                 <div class="col-md-6 p-4">
                                                     <div class="campoForm2">
                                                         <Label>Data de Agendamento:</Label><br>
-                                                        <input type="text" name="dateAgend" id="dateAgend" disabled>
+                                                        <input type="text" name="data_agendamento" id="dateAgend" value="" disabled>
                                                     </div>
 
                                                     <div class="campoForm2">
