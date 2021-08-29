@@ -73,7 +73,7 @@ $dt = new Teste();
     <?php
         if (isset($_POST['enviar'])) {
             $dataA = $_POST['data_agendamento'];
-            echo " :"+$_POST['data_agendamento'];
+            
             if ($dataA != "") {
                 $dts = new TesteController();
                 unset($_POST['enviar']);
