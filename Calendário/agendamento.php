@@ -73,7 +73,7 @@ $dt = new Teste();
     <?php
         if (isset($_POST['enviar'])) {
             $dataA = $_POST['data_agendamento'];
-            
+            echo " :"+$_POST['data_agendamento'];
             if ($dataA != "") {
                 $dts = new TesteController();
                 unset($_POST['enviar']);
@@ -258,10 +258,13 @@ $dt = new Teste();
                                                 </div>
 
                                                 <!-- Lado direito do Formulário 2prt -->
+                                                
                                                 <div class="col-md-6 p-4">
+                                                    
                                                     <div class="campoForm2">
+                                                        <div class="barreira"></div>
                                                         <Label>Data de Agendamento:</Label><br>
-                                                        <input type="text" name="data_agendamento" id="dateAgend" value="" disabled>
+                                                        <input type="text" name="data_agendamento" id="dateAgend" value="" >
                                                     </div>
 
                                                     <div class="campoForm2">
