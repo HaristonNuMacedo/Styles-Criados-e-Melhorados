@@ -72,13 +72,16 @@ class CALENDAR {
         this.elements.year.innerHTML = calendar.active.year;
         this.elements.currentDay.innerHTML = calendar.active.day;
         this.elements.currentWeekDay.innerHTML = AVAILABLE_WEEK_DAYS[calendar.active.week];
+        
+        // Passando para o nome por extenso dos meses para o calendário utilizando o metodo
+        // o método para colocar o Objeto dentro do array.
         let monthLeft = [this.elements.currentMonth.innerHTML = AVAILABLE_MONTH[calendar.active.month]];
-
         document.getElementsByClassName('calendar-left-side-month').value = monthLeft;
     }
 
     drawDateConfirm() {
-        // SUBClasse que chama o dia, a semana e o ano dentro do calendário.
+        // SUBClasse que chama o dia, a semana e o ano dentro do calendário. 
+        // Adicionando o Onjeto ao Input da data escolhida pelo usuário.
         let calendar = this.getCalendar();
         let eventListday = [this.elements.currentDay.innerHTML = calendar.active.day];
         let eventListYear = [this.elements.year.innerHTML = calendar.active.year];

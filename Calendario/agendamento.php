@@ -1,11 +1,11 @@
 <?php
-include_once 'C:/xampp/htdocs/Calendario/controller/testeController.php';
-include_once 'C:/xampp/htdocs/Calendario/dao/daoTeste.php';
-include_once 'C:/xampp/htdocs/Calendario/model/teste.php';
-include_once 'C:/xampp/htdocs/Calendario/model/mensagem.php';
+include_once 'C:/xampp/htdocs/Calendario/back-end/controller/testeController.php';
+include_once 'C:/xampp/htdocs/Calendario/back-end/dao/daoTeste.php';
+include_once 'C:/xampp/htdocs/Calendario/back-end/model/agendamento_model.php';
+include_once 'C:/xampp/htdocs/Calendario/back-end/model/mensagem.php';
 
 $msg = new Mensagem();
-$dt = new Teste();
+$dt = new Agendamento();
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +90,7 @@ $dt = new Teste();
         <div class="PainelAG">
             <div class="conteudo">
                 <div class="calendario">
-
+                    <div>
                     <div class="calendar disable-selection" id="calendar">
                         <div class="left-side">
                             <div class="current-day text-center">
@@ -279,16 +279,25 @@ $dt = new Teste();
                                                     </div>
                                                     <div class="campoForm2">
                                                         <Label>Serviço Escolhido:</Label><br>
-                                                        <select name="escolherHorario" class="form-control">
-                                                            <option>[--Nenhum Serviço--]</option>
-                                                            <option name="cor">08:30</option>
-                                                            <option name="cor">09:15</option>
-                                                            <option name="cor">10:00</option>
-                                                            <option name="cor">10:20</option>
-                                                            <option name="cor">10:50</option>
-                                                            <option name="cor">11:30</option>
-                                                            <option name="cor">13:00</option>
-                                                        </select>
+                                                        <div class="row">
+                                                            <div class="col-md-10">
+                                                                <select name="escolherHorario" class="form-control">
+                                                                    <option>[--Nenhum Serviço--]</option>
+                                                                    <option name="cor">08:30</option>
+                                                                    <option name="cor">09:15</option>
+                                                                    <option name="cor">10:45</option>
+                                                                    <option name="cor">11:10</option>
+                                                                    <option name="cor">11:40</option>
+                                                                    <option name="cor">14:00</option>
+                                                                    <option name="cor">14:20</option>
+                                                                    <option name="cor">15:00</option>
+                                                                    <option name="cor">15:30</option>
+                                                                    <option name="cor">16:15</option>
+                                                                    <option name="cor">16:50</option>
+                                                                    <option name="cor">17:30</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="footer" style="background-color: #fff;">
