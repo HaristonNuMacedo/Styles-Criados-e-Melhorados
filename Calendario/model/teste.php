@@ -3,6 +3,8 @@
 class Teste {
     private $id;
     private $dataAgenda;
+    private $horario;
+    private $dateTime;
 
     /**
      * Get the value of idFornecedor
@@ -40,6 +42,46 @@ class Teste {
     public function setDataAgenda($dataAgenda)
     {
         $this->dataAgenda = $dataAgenda;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of horario
+     */ 
+    public function getHorario()
+    {
+        return $this->horario;
+    }
+
+    /**
+     * Set the value of horario
+     *
+     * @return  self
+     */ 
+    public function setHorario($horario)
+    {
+        $this->horario = $horario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of dateTime
+     */ 
+    public function getDateTime()
+    {
+        return $this->dateTime;
+    }
+
+    /**
+     * Set the value of dateTime
+     *
+     * @return  self
+     */ 
+    public function setDateTime($dateTime)
+    {
+        $this->dateTime = $dateTime;
 
         return $this;
     }

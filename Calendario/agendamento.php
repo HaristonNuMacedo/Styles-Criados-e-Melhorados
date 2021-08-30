@@ -1,8 +1,8 @@
 <?php
-include_once 'C:/xampp/htdocs/TesteAgend/controller/testeController.php';
-include_once 'C:/xampp/htdocs/TesteAgend/dao/daoTeste.php';
-include_once 'C:/xampp/htdocs/TesteAgend/model/teste.php';
-include_once 'C:/xampp/htdocs/TesteAgend/model/mensagem.php';
+include_once 'C:/xampp/htdocs/Calendario/controller/testeController.php';
+include_once 'C:/xampp/htdocs/Calendario/dao/daoTeste.php';
+include_once 'C:/xampp/htdocs/Calendario/model/teste.php';
+include_once 'C:/xampp/htdocs/Calendario/model/mensagem.php';
 
 $msg = new Mensagem();
 $dt = new Teste();
@@ -73,13 +73,13 @@ $dt = new Teste();
     <?php
         if (isset($_POST['enviar'])) {
             $dataA = $_POST['data_agendamento'];
-            echo " :"+$_POST['data_agendamento'];
             if ($dataA != "") {
+                $horario = $_POST['escolherHorario'];
                 $dts = new TesteController();
                 unset($_POST['enviar']);
-                $msg = $dts->inserirData($dataA);
+                $msg = $dts->inserirData($dataA, $horario);
                 echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
-                    URL='http://localhost/TesteAgend/agendamento.php'\">";
+                    URL='http://localhost/Calendario/agendamento.php'\">";
             }
         }
     ?>
@@ -260,7 +260,6 @@ $dt = new Teste();
                                                 <!-- Lado direito do Formulário 2prt -->
                                                 
                                                 <div class="col-md-6 p-4">
-                                                    
                                                     <div class="campoForm2">
                                                         <div class="barreira"></div>
                                                         <Label>Data de Agendamento:</Label><br>
@@ -277,6 +276,19 @@ $dt = new Teste();
                                                         <Label>Serviço Escolhido:</Label><br>
                                                         <input type="text" name="servico" id="servico"
                                                             value="Serviço(4)" disabled>
+                                                    </div>
+                                                    <div class="campoForm2">
+                                                        <Label>Serviço Escolhido:</Label><br>
+                                                        <select name="escolherHorario" class="form-control">
+                                                            <option>[--Nenhum Serviço--]</option>
+                                                            <option name="cor">08:30</option>
+                                                            <option name="cor">09:15</option>
+                                                            <option name="cor">10:00</option>
+                                                            <option name="cor">10:20</option>
+                                                            <option name="cor">10:50</option>
+                                                            <option name="cor">11:30</option>
+                                                            <option name="cor">13:00</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="footer" style="background-color: #fff;">

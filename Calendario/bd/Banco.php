@@ -6,7 +6,7 @@ class Conecta {
         $pdo = null;
         try{
             $pdo = new PDO("mysql:host=localhost;dbname=dblivro", 
-            "root", "root");
+            "root", "senac");
         }catch(Exception $ex){
             echo "<script>alert('Erro na conexão com o "
                 . "banco de dados.')</script>";
@@ -18,4 +18,7 @@ class Conecta {
 /* tabela testedate
 
 id int(11) primary key auto_increment,
-dataAgend DATE not null; */
+data DATE not null,
+horario time not null,
+data_registro dateTime not null;
+*/
