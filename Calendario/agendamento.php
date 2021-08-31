@@ -1,11 +1,12 @@
 <?php
-include_once 'C:/xampp/htdocs/Calendario/controller/testeController.php';
-include_once 'C:/xampp/htdocs/Calendario/dao/daoTeste.php';
+include_once 'C:/xampp/htdocs/Calendario/controller/agendamentoController.php';
+include_once 'C:/xampp/htdocs/Calendario/dao/daoAgendamento.php';
 include_once 'C:/xampp/htdocs/Calendario/model/agendamento_model.php';
 include_once 'C:/xampp/htdocs/Calendario/model/mensagem.php';
 
 $msg = new Mensagem();
 $dt = new Agendamento();
+$dts = new AgendamentoController();
 ?>
 
 <!DOCTYPE html>
@@ -79,16 +80,17 @@ $dt = new Agendamento();
             $offset = $userTimezone->getOffset($myDateTime);
             return date($format, ($timestamp!=false?(int)$timestamp:$myDateTime->format('U')) + $offset);
         }
-        $dateTime = _date("Y-m-d", false, 'America/Sao_Paulo');
+        $dateEscolhida = _date("Y-m-d", false, 'America/Sao_Paulo');
+        $dateTime = _date("Y-m-d H:i:s", false, 'America/Sao_Paulo');
         
         if (isset($_POST['enviar'])) {
             $dataA = $_POST['data_agendamento'];
-            if ($dataA < $dateTime) {
+            if ($dataA < $dateEscolhida) {
                 ?>
                 <script>
                     Swal.fire({
                             title: 'Cadastro não realizado!',
-                            text: 'O dia do cadastro não pode ser feito antes do dia atual (<?php echo $dateTime ?>)!',
+                            text: 'O dia escolhido não pode ser agendado antes do dia atual (<?php echo $dateTime ?>)!',
                             icon: 'error',
                             confirmButtonText: 'Ok'
                     })
@@ -97,7 +99,7 @@ $dt = new Agendamento();
             } else {
                 $horario = $_POST['escolherHorario'];
                 if ($horario != "") {  
-                    $dts = new TesteController();
+                    $dts = new AgendamentoController();
                     unset($_POST['enviar']);
                     $msg = $dts->inserirData($dataA, $horario);
                     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
