@@ -1,8 +1,8 @@
 <?php
-include_once 'C:/xampp/htdocs/Calendario/back-end/controller/testeController.php';
-include_once 'C:/xampp/htdocs/Calendario/back-end/dao/daoTeste.php';
-include_once 'C:/xampp/htdocs/Calendario/back-end/model/agendamento_model.php';
-include_once 'C:/xampp/htdocs/Calendario/back-end/model/mensagem.php';
+include_once 'C:/xampp/htdocs/Calendario/controller/testeController.php';
+include_once 'C:/xampp/htdocs/Calendario/dao/daoTeste.php';
+include_once 'C:/xampp/htdocs/Calendario/model/agendamento_model.php';
+include_once 'C:/xampp/htdocs/Calendario/model/mensagem.php';
 
 $msg = new Mensagem();
 $dt = new Agendamento();

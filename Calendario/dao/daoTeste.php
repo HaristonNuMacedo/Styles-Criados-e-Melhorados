@@ -1,22 +1,24 @@
 <?php
 include_once 'C:/xampp/htdocs/Calendario/bd/Banco.php';
-include_once 'C:/xampp/htdocs/Calendario/model/teste.php';
+include_once 'C:/xampp/htdocs/Calendario/model/agendamento_model.php';
 
 class DaoData {
     
-    public function inserirDataDAO(teste $teste){
+    public function inserirDataDAO(Agendamento $agend){
         $conn = new Conecta();
         $msg = new Mensagem();
         $conecta = $conn->conectadb();
         if($conecta){
-            $data = $teste->getDataAgenda();
-            $horario = $teste->getHorario();
-            $dateTime = $teste->getDateTime();
-            //$dateTime = date('Y-m-d H:i:s');
+            $data = $agend->getDataAgenda();
+            $horario = $agend->getHorario();
+            $dateTime = $agend->getDateTime();
+
+            // Verificando se a data é UTC.
             $defaultTimeZone='UTC';
             if(date_default_timezone_get()!=$defaultTimeZone) date_default_timezone_set($defaultTimeZone);
 
-            // somewhere in the code
+            // Função para trabalhar a data com o código abaxio passando ela para GMT e 
+            // colocando tipos de formatação de data.
             function _date($format="r", $timestamp=false, $timezone=false) {
                 $userTimezone = new DateTimeZone(!empty($timezone) ? $timezone : 'GMT');
                 $gmtTimezone = new DateTimeZone('GMT');
@@ -25,8 +27,9 @@ class DaoData {
                 return date($format, ($timestamp!=false?(int)$timestamp:$myDateTime->format('U')) + $offset);
             }
 
-            /* Example */
-            $dateTime = _date("Y-m-d h:i:s", false, 'America/Sao_Paulo');
+            /* Chamando a função _date para dentro de uma variável e depois inserindo uma data 
+                automática no Banco juntamente com os outros dados */
+            $dateTime = _date("Y-m-d H:i:s", false, 'America/Sao_Paulo');
 
             try {
                 $stmt = $conecta->prepare("insert into testedate values "
