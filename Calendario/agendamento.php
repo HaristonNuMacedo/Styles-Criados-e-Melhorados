@@ -31,9 +31,7 @@ $dt = new Agendamento();
         crossorigin="anonymous"></script>
 
     <!-- SweetAlert -->
-    <script src="sweetalert2.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="Js/sweetalert2.all.min.js"></script>
 
     <!-- JavaScript Para Funções da Página -->
 
@@ -71,16 +69,41 @@ $dt = new Agendamento();
     </header>
 
     <?php
+        $defaultTimeZone='UTC';
+        if(date_default_timezone_get()!=$defaultTimeZone) date_default_timezone_set($defaultTimeZone);
+
+        function _date($format="r", $timestamp=false, $timezone=false) {
+            $userTimezone = new DateTimeZone(!empty($timezone) ? $timezone : 'GMT');
+            $gmtTimezone = new DateTimeZone('GMT');
+            $myDateTime = new DateTime(($timestamp!=false?date("r",(int)$timestamp):date("r")), $gmtTimezone);
+            $offset = $userTimezone->getOffset($myDateTime);
+            return date($format, ($timestamp!=false?(int)$timestamp:$myDateTime->format('U')) + $offset);
+        }
+        $dateTime = _date("Y-m-d", false, 'America/Sao_Paulo');
+        
         if (isset($_POST['enviar'])) {
             $dataA = $_POST['data_agendamento'];
-            if ($dataA != "") {
+            if ($dataA < $dateTime) {
+                ?>
+                <script>
+                    Swal.fire({
+                            title: 'Cadastro não realizado!',
+                            text: 'O dia do cadastro não pode ser feito antes do dia atual (<?php echo $dateTime ?>)!',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                    })
+                </script>
+                <?php
+            } else {
                 $horario = $_POST['escolherHorario'];
-                $dts = new TesteController();
-                unset($_POST['enviar']);
-                $msg = $dts->inserirData($dataA, $horario);
-                echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
-                    URL='http://localhost/Calendario/agendamento.php'\">";
-            }
+                if ($horario != "") {  
+                    $dts = new TesteController();
+                    unset($_POST['enviar']);
+                    $msg = $dts->inserirData($dataA, $horario);
+                    echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
+                        URL='http://localhost/Calendario/agendamento.php'\">";
+                }
+            } 
         }
     ?>
 
@@ -281,7 +304,7 @@ $dt = new Agendamento();
                                                         <Label>Serviço Escolhido:</Label><br>
                                                         <div class="row">
                                                             <div class="col-md-10">
-                                                                <select name="escolherHorario" class="form-control">
+                                                                <select name="escolherHorario" class="form-control" required>
                                                                     <option>[--Nenhum Serviço--]</option>
                                                                     <option name="cor">08:30</option>
                                                                     <option name="cor">09:15</option>
