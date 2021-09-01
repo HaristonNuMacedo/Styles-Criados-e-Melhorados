@@ -7,6 +7,12 @@ include_once 'C:/xampp/htdocs/Calendario/model/mensagem.php';
 $msg = new Mensagem();
 $dt = new Agendamento();
 $dts = new AgendamentoController();
+
+include_once 'C:/xampp/htdocs/Calendario/controller/servicosController.php';
+include_once 'C:/xampp/htdocs/Calendario/model/servicos_model.php';
+$sev = new Servicos();
+$serv = new ServicosController();
+
 ?>
 
 <!DOCTYPE html>
@@ -73,15 +79,14 @@ $dts = new AgendamentoController();
         $defaultTimeZone='UTC';
         if(date_default_timezone_get()!=$defaultTimeZone) date_default_timezone_set($defaultTimeZone);
 
-        function _date($format="r", $timestamp=false, $timezone=false) {
+        function _dateAtual($format="r", $timestamp=false, $timezone=false) {
             $userTimezone = new DateTimeZone(!empty($timezone) ? $timezone : 'GMT');
             $gmtTimezone = new DateTimeZone('GMT');
             $myDateTime = new DateTime(($timestamp!=false?date("r",(int)$timestamp):date("r")), $gmtTimezone);
             $offset = $userTimezone->getOffset($myDateTime);
             return date($format, ($timestamp!=false?(int)$timestamp:$myDateTime->format('U')) + $offset);
         }
-        $dateEscolhida = _date("Y-m-d", false, 'America/Sao_Paulo');
-        $dateTime = _date("Y-m-d H:i:s", false, 'America/Sao_Paulo');
+        $dateEscolhida = _dateAtual("Y-m-d", false, 'America/Sao_Paulo');
         
         if (isset($_POST['enviar'])) {
             $dataA = $_POST['data_agendamento'];
@@ -90,7 +95,7 @@ $dts = new AgendamentoController();
                 <script>
                     Swal.fire({
                             title: 'Cadastro não realizado!',
-                            text: 'O dia escolhido não pode ser agendado antes do dia atual (<?php echo $dateTime ?>)!',
+                            text: 'O dia escolhido não pode ser agendado antes do dia atual (<?php echo $dateEscolhida ?>)!',
                             icon: 'error',
                             confirmButtonText: 'Ok'
                     })
@@ -99,9 +104,10 @@ $dts = new AgendamentoController();
             } else {
                 $horario = $_POST['escolherHorario'];
                 if ($horario != "") {  
+                    $dataA = $_POST['data_agendamento'];
                     $dts = new AgendamentoController();
                     unset($_POST['enviar']);
-                    $msg = $dts->inserirData($dataA, $horario);
+                    $msg = $dts->inserirDataAgendamento($dataA, $horario);
                     echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
                         URL='http://localhost/Calendario/agendamento.php'\">";
                 }
@@ -307,7 +313,7 @@ $dts = new AgendamentoController();
                                                         <div class="row">
                                                             <div class="col-md-10">
                                                                 <select name="escolherHorario" class="form-control" required>
-                                                                    <option>[--Nenhum Serviço--]</option>
+                                                                    <option>[--Selecione--]</option>
                                                                     <option name="cor">08:30</option>
                                                                     <option name="cor">09:15</option>
                                                                     <option name="cor">10:45</option>

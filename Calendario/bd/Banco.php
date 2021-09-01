@@ -5,7 +5,7 @@ class Conecta {
     public function conectadb(){
         $pdo = null;
         try{
-            $pdo = new PDO("mysql:host=localhost;dbname=dblivro", 
+            $pdo = new PDO("mysql:host=localhost;dbname=dbbarbearia", 
             "root", "root");
         }catch(Exception $ex){
             echo "<script>alert('Erro na conexão com o "
@@ -15,7 +15,12 @@ class Conecta {
     }
 }
 
-/* tabela testedate
+
+// __Tabela feita para testes dos Dia Escolhido no calendário e o horário, juntamente
+// com a data de registro que é inserida automaticamente para o banco.
+
+/* 
+table testedate
 
 id int(11) primary key auto_increment,
 data DATE not null,
