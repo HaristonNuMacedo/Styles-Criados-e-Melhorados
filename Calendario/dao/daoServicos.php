@@ -10,14 +10,14 @@ class DaoServicos {
         $conecta = $conn->conectadb();
         if ($conecta) {
             try{
-                $serag = $conecta->query("select * from servicos order by servicos.id");
+                $serag = $conecta->query("select * from servicos");
                 $lista = array();
                 $a = 0;
                 if($serag->execute()){
                     if($serag->rowCount() > 0){
                         while($linha = $serag->fetch(PDO::FETCH_OBJ)){
                             $servicos = new Servicos();
-                            $servicos->setId($linha->id);
+                            $servicos->setIdServico($linha->id);
                             $servicos->setNomeServico($linha->nome);
                             $servicos->setValor($linha->valor);
                             $servicos->setTempoServico($linha->tempo_estimado);

@@ -1,31 +1,11 @@
 <?php
 
 class Servicos {
-    private $id;
+    private $idServico;
     private $nomeServico;
     private $valor;
     private $tempoServico;
 
-
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Get the value of nomeServico
@@ -83,6 +63,26 @@ class Servicos {
     public function setTempoServico($tempoServico)
     {
         $this->tempoServico = $tempoServico;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idServico
+     */ 
+    public function getIdServico()
+    {
+        return $this->idServico;
+    }
+
+    /**
+     * Set the value of idServico
+     *
+     * @return  self
+     */ 
+    public function setIdServico($idServico)
+    {
+        $this->idServico = $idServico;
 
         return $this;
     }
