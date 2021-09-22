@@ -6,15 +6,11 @@ include_once 'C:/xampp/htdocs/Calendario/model/agendamento_model.php';
 $dt = new Agendamento();
 $dts = new AgendamentoController();
 
-include_once 'C:/xampp/htdocs/Calendario/model/mensagem.php';
-$msg = new Mensagem();
+include_once 'C:/xampp/htdocs/Calendario/bd/banco.php';
 
-include_once 'C:/xampp/htdocs/Calendario/controller/servicos_has_funcionariosController.php';
 include_once 'C:/xampp/htdocs/Calendario/model/servicos_has_funcionarios.php';
-$sev = new Servicos_has_funcionarios();
-
-
-$s_has_f = new Servicos_has_funcionariosController();
+include_once 'C:/xampp/htdocs/Calendario/controller/servicos_has_funcionariosController.php';
+$serv = new Servicos_has_funcionariosController();
 
 ?>
 
@@ -58,7 +54,7 @@ $s_has_f = new Servicos_has_funcionariosController();
         }
     </Style>
 
-<body>
+<body style="border: 2px solid #000000; background-color: #333;">
     <header>
         <a href="./index.html" class="logo">Barbearia Neves<span>.</span></a>
         <div class="menuToggle" onclick=" toggleMenu();"></div>
@@ -112,228 +108,117 @@ $s_has_f = new Servicos_has_funcionariosController();
         }
     }
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $shsf = new Servicos_has_funcionariosController();
-        $sf = $shsf->pesquisarFuncionariosId($id);
-    }
-
     session_start();
-    $data = $_SESSION['data'];
+    $data = $_SESSION['dataAgendamento'];
     ?>
 
-    <form method="post" action="" class="agendamento" id="agendamento">
-        <div class="card-body" style="border: 2px solid #000000; background-color: #333;">
+    <form method="POST" action="" class="agendamento" id="agendamento" style="background-color: #333;">
+        <div class="card-body" style="background-color: #333;">
             <div class="card-header tituloAgend">
                 Escolha entre os serviços Masculinos ou Femininos
             </div><br>
-            <section class="season2-ryzen5">
-                <div class="img-s2">
-                    <div class="text-ryzen5">
-                        <h2></h2>
-                        <div class="row escolhaSexo">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-3">
-                                <div class="row">
-                                    <div class="col-md-10 offset-2">
-                                        <a >
-                                            <button type="button" class="masculino" onclick="fechar('r5')">
-                                               Masculino</button></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <div class="row">
-                                    <div class="col-md-7 offset-5">
-                                        <label class="text-center">____</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="row">
-                                    <div class="col-md-12 offset-xxl-1">
-                                        <button type="button" class="feminino" onclick="fechar('rFemin')">Feminino</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-1"></div>
-                        </div>
-                    </div>
-
-                    <div id="r5" class="hidden5">
-                        <div class="mostrar-011">
-
-                            <div class="col-12 " style="margin-bottom: 25px;">
-                                <div class="card-header text-start text-dark" style="background-color: rgb(255, 255, 255);">
-                                    <div class="row">
-                                        <div class="col-md-4 offset-4 funcionario">
-                                            <label style="padding: 5px; font-size: 18px;"><strong>Funcionário</strong></label>
-                                            <select name="cor" class="form-control">
-                                                <option name="cor">Funcionario(1)</option>
-                                                <option name="cor">Funcionario(2)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="background-color: rgb(255, 255, 255);">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-4">
-                                            <img class="salaoMasculino" src="img/corteMasculino.jpg">
-                                            <div>
-                                                <label style="padding: 5px; font-size: 18px;"><strong>Salão
-                                                        Masculino</strong></label>
-                                                <label class="cliqueAqui" style="color: black; position: relative; font-size: 14px; margin-left: 5px;">
-                                                    Clique aqui.&#9660;</label>
-                                                <select name="cor" class="form-control">
-                                                    <option>[--Nenhum Serviço--]</option>
-                                                    <option name="cor">Serviço(1)</option>
-                                                    <option name="cor">Serviço(2)</option>
-                                                    <option name="cor">Serviço(3)</option>
-                                                    <option name="cor">Serviço(4)</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <img class="combosMasc" src="img/como-aparar-a-barba-02.jpg">
-                                            <div>
-                                                <label style="padding: 5px; font-size: 18px;"><strong>Combos Masc.</strong></label>
-                                                <label class="cliqueAqui" style="color: black; position: relative; font-size: 14px; margin-left: 5px;">
-                                                    Clique aqui.&#9660;</label>
-                                                <select name="Perfil" class="form-control">
-                                                    <option>[--Nenhum Serviço--]</option>
-                                                    <option name="cor">Serviço(1)</option>
-                                                    <option name="cor">Serviço(2)</option>
-                                                    <option name="cor">Serviço(3)</option>
-                                                    <option name="cor">Serviço(4)</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div id="rFemin" class="hidden5">
-                        <div class="mostrar-011">
-
-                            <div class="col-12 " style="margin-bottom: 25px;">
-                                <div class="card-header text-start text-dark" style="background-color: rgb(255, 255, 255);">
-                                    <div class="row">
-                                        <div class="col-md-4 offset-4 funcionario">
-                                            <label style="padding: 5px; font-size: 18px;"><strong>Funcionário</strong></label>
-                                            <select name="cor" class="form-control">
-                                                <option name="cor">Funcionario(1)</option>
-                                                <option name="cor">Funcionario(2)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row" style="background-color: rgb(255, 255, 255);">
-                                        <div class="col-md-4"></div>
-
-                                        <div class="col-md-4">
-                                            <img class="belezaFeminina" src="img/manicure-de-sucesso.jpg">
-                                            <div>
-                                                <label style="padding: 5px; font-size: 18px;"><strong>Beleza
-                                                        Feminina</strong></label>
-                                                <label class="cliqueAqui" style="color: black; position: relative; font-size: 14px; margin-left: 5px;">
-                                                    Clique aqui.&#9660;</label>
-                                                <select name="Perfil" class="form-control">
-                                                    <option>[--Nenhum Serviço--]</option>
-                                                    <option name="cor">Serviço(1)</option>
-                                                    <option name="cor">Serviço(2)</option>
-                                                    <option name="cor">Serviço(3)</option>
-                                                    <option name="cor">Serviço(4)</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span style="color: transparent">.</span>
-            </section>
-
-            <div id="modar3">
             <div class="row">
-                <div class="col-md-2"></div>
-                <div class="row formulario">
-                    <!-- Lado esquerdo do Formulário 2prt -->
-                    <div class="col-md-6 p-4">
-                        <div class="campoForm2">
-                            <label for="nome">Nome/Usuário: </label><br>
-                            <input type="text" id="nome" name="nome" value="testeNome" disabled><br>
-                        </div>
-                        <div class="campoForm2">
-                            <label for="telefone">Telefone: </label><br>
-                            <input type="text" id="telefone" name="telefone" value="testTelefone" disabled><br>
-                        </div>
-                        <div class="campoForm2">
-                            <label for="email">E-mail: </label><br>
-                            <input type="text" id="email" name="email" value="testeEmail20@gmail.com" disabled><br>
-                        </div>
-                    </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3 funcionario">
+                    <label style="padding: 5px; font-size: 18px; color: white "><strong>Serviços</strong></label>
+                    <select name="id_servicos" id="id_servicos" class="form-control">
+                        
+                            <option value="">Escolher serviço</option>
+                        <?php
+                        $result_post = "select * from servicos_has_funcionarios "
+                            . "left join servicos on servicos.id = servicos_has_funcionarios.servicos_id "
+                            . "order by nome";
+                        $resultado_post = mysqli_query($conn, $result_post);
+                        while ($row_post = mysqli_fetch_assoc($resultado_post)) {
+                            echo '<option value="' . $row_post['id'] . '">' . $row_post['nome'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
 
-                    <!-- Lado direito do Formulário 2prt -->
-
-                    <div class="col-md-6 p-4">
-                        <div class="campoForm2">
-                            <div class="barreira"></div>
-                            <Label>Data de Agendamento:</Label><br>
-                            <input type="text" name="data_agendamento" value="<?php echo $data ?>">
-                        </div>
-
-                        <div class="campoForm2">
-                            <Label>Funcionario:</Label><br>
-                            <input type="text" name="servico" id="servico" value="Fulano Guilherme" disabled>
-                        </div>
-
-                        <div class="campoForm2">
-                            <Label>Serviço Escolhido:</Label><br>
-                            <input type="text" name="servico" id="servico" value="Serviço(4)" disabled>
-                        </div>
-                        <div class="campoForm2">
-                            <Label>Agendar horário do Serviço:</Label><br>
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <select name="escolherHorario" class="form-control" required>
-                                        <option>[--Selecione--]</option>
-                                        <option name="cor">08:30</option>
-                                        <option name="cor">09:15</option>
-                                        <option name="cor">10:45</option>
-                                        <option name="cor">11:10</option>
-                                        <option name="cor">11:40</option>
-                                        <option name="cor">14:00</option>
-                                        <option name="cor">14:20</option>
-                                        <option name="cor">15:00</option>
-                                        <option name="cor">15:30</option>
-                                        <option name="cor">16:15</option>
-                                        <option name="cor">16:50</option>
-                                        <option name="cor">17:30</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer" style="background-color: #fff;">
-                        <button type="submit" class="btn efeito-btn" name="enviar" id="enviar">Fazer agendamento</button>
-                        <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
+                <div class="col-md-3 funcionario">
+                    <label style="padding: 5px; font-size: 18px; color: White"><strong>Funcionarios
+                            </strong></label>
+                    <label class="cliqueAqui" style="color: White; position: relative; font-size: 14px; margin-left: 5px;">
+                            Clique aqui.&#9660;</label>
+                    <select name="id_funcionarios" id="id_funcionarios" class="form-control">
+                        <option value="">Escolher funcionario</option>
+                    </select>
                 </div>
             </div>
-        </div>
+
+                <div id="modar3">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="row formulario">
+                            <!-- Lado esquerdo do Formulário 2prt -->
+                            <div class="col-md-6 p-4">
+                                <div class="campoForm2">
+                                    <label for="nome">Nome/Usuário: </label><br>
+                                    <input type="text" id="nome" name="nome" value="testeNome" disabled><br>
+                                </div>
+                                <div class="campoForm2">
+                                    <label for="telefone">Telefone: </label><br>
+                                    <input type="text" id="telefone" name="telefone" value="testTelefone" disabled><br>
+                                </div>
+                                <div class="campoForm2">
+                                    <label for="email">E-mail: </label><br>
+                                    <input type="text" id="email" name="email" value="testeEmail20@gmail.com" disabled><br>
+                                </div>
+                            </div>
+
+                            <!-- Lado direito do Formulário 2prt -->
+
+                            <div class="col-md-6 p-4" style="margin: 0px;">
+                                <div class="campoForm2">
+                                    <div class="barreira"></div>
+                                    <Label>Data de Agendamento:</Label><br>
+                                    <input type="text" name="data_agendamento" value="<?php echo $data ?>">
+                                </div>
+
+                                <div class="campoForm2">
+                                    <Label>Agendar horário do Serviço:</Label><br>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select name="escolherHorario" class="form-control">
+                                                <option>[--Selecione--]</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer" style="background-color: #fff;">
+                                <button type="submit" class="btn efeito-btn" name="enviar" id="enviar">Fazer agendamento</button>
+                                <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </form>
 
     <link rel="stylesheet" href="./css/Style-Agend.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="Js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			$('#id_servicos').change(function(){
+				if( $(this).val() ) {
+					$('#id_funcionarios').hide();
+					$('.cliqueAqui').show();
+					$.getJSON('agendamentoFormularioSub.php?search=',{id_servicos: $(this).val(), ajax: 'true'}, function(j){
+						var options = '<option value="">Escolher serviço</option>';	
+						for (var i = 0; i < j.length; i++) {
+							options += '<option value="' + j[i].id + '">' + j[i].nome + '</option>';
+						}	
+						$('#id_funcionarios').html(options).show();
+						$('.cliqueAqui').hide();
+					});
+				} else {
+					$('#id_funcionarios').html('<option value="">– Escolha Funcionario –</option>');
+				}
+			});
+		});
+	</script>
     <script src="Js/Agendamento.js"></script>
     <script src="Js/Calendario.js"></script>
 </body>

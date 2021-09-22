@@ -6,7 +6,7 @@ include_once 'C:/xampp/htdocs/Calendario/model/funcionario.php';
 
 class DaoServicos_agendamentos {
     
-    public function listarServicos_has_funcionariosDAO(){
+    public function listarServicos_has_funcionariosDAO($id){
         $conn = new Conecta();
         $msg = new Mensagem();
         $conecta = $conn->conectadb();
@@ -14,7 +14,11 @@ class DaoServicos_agendamentos {
         
         if ($conecta) {
             try{
-                $serag = $conecta->query("select * from servicos_has_funcionarios left join servicos on servicos.id = servicos_has_funcionarios.servicos_id left join funcionarios on funcionarios.id = servicos_has_funcionarios.funcionarios_id");
+                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $serag = $conecta->prepare("select * from servicos_has_funcionarios "
+                    ."left join servicos on servicos.id = servicos_has_funcionarios.servicos_id "
+                    ."left join funcionarios on funcionarios.id = "
+                    ."servicos_has_funcionarios.funcionarios_id");
                 $lista = array();
                 $a = 0;
                 if($serag->execute()){
@@ -24,10 +28,10 @@ class DaoServicos_agendamentos {
                             //$servFunc->setServicos_id($linha->servicos_id);
                             //$servFunc->setFuncionarios_id($linha->funcionarios_id);
 
-                            $servicos = new Servicos();
-                            $servicos->setIdServico($linha->id);
+                            $servicos = new Servicos_model();
+                            $servicos->setIdServicos($linha->id);
                             $servicos->setNomeServico($linha->nome);
-                            $servicos->setValor($linha->valor);
+                            $servicos->setValorServico($linha->valor);
                             $servicos->setTempoServico($linha->tempo_estimado);
 
                             $func = new Funcionario();
@@ -38,8 +42,8 @@ class DaoServicos_agendamentos {
                             $func->setEmail($linha->email);
                             $func->setSenha($linha->senha);
 
-                            $servFunc->setServicos($servicos);
-                            $servFunc->setFuncionarios($func);
+                            $servFunc->setServicos_id($servicos);
+                            $servFunc->setFuncionarios_id($func);
                            
                             $lista[$a] = $servFunc;
                             $a++;
@@ -63,8 +67,12 @@ class DaoServicos_agendamentos {
         
         if ($conecta) {
             try{
-                $serag = $conecta->query("select * from servicos_has_funcionarios left join servicos on servicos.id = servicos_has_funcionarios.servicos_id left join funcionarios on funcionarios.id = servicos_has_funcionarios.funcionarios_id "
-                    ."where servicos_has_funcionarios.funcionarios_id = ?");
+                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $serag = $conecta->prepare("select * from servicos_has_funcionarios "
+                    ."left join servicos on servicos.id = servicos_has_funcionarios.servicos_id "
+                    ."left join funcionarios on funcionarios.id = "
+                    ."servicos_has_funcionarios.funcionarios_id "
+                    ."WHERE servicos.id = ?");
                 $serag->bindParam(1, $id);
                 if($serag->execute()){
                     if($serag->rowCount() > 0){
@@ -73,10 +81,10 @@ class DaoServicos_agendamentos {
                             //$servFunc->setServicos_id($linha->servicos_id);
                             //$servFunc->setFuncionarios_id($linha->funcionarios_id);
 
-                            $servicos = new Servicos();
-                            $servicos->setIdServico($linha->id);
+                            $servicos = new Servicos_model();
+                            $servicos->setIdServicos($linha->id);
                             $servicos->setNomeServico($linha->nome);
-                            $servicos->setValor($linha->valor);
+                            $servicos->setValorServico($linha->valor);
                             $servicos->setTempoServico($linha->tempo_estimado);
 
                             $func = new Funcionario();
@@ -87,14 +95,14 @@ class DaoServicos_agendamentos {
                             $func->setEmail($linha->email);
                             $func->setSenha($linha->senha);
 
-                            $servFunc->setServicos($servicos);
-                            $servFunc->setFuncionarios($func);
+                            $servFunc->setServicos_id($servicos);
+                            $servFunc->setFuncionarios_id($func);
                            
                         }
                     }
                 }
-            } catch (Exception $ex) {
-                $msg->setMsg($ex);
+            } catch (PDOException $ex) {
+                $msg->setMsg(var_dump($ex->errorInfo));
             }  
             $conn = null;
 

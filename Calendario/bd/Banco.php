@@ -1,5 +1,13 @@
 <?php
 
+$servidor = "localhost";
+$usuario = "root";
+$senha = "root";
+$dbname = "dbbarbearia";
+
+//Criar a conexão
+$conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+
 class Conecta {
     
     public function conectadb(){

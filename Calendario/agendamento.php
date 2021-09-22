@@ -63,7 +63,7 @@
         </ul>
     </header>
 
-    <div style="background-color: #333; position: relative; width: 100%; height: 200px;"></div>
+    <div class="pcs" style="background-color: #333; position: relative; width: 100%; height: 200px;"></div>
     <section class="agenda" id="agenda">
         <h2 class="titleText"><span>A</span>gendamento</h2>
         <div class="PainelAG">
@@ -155,7 +155,7 @@
                     </script>
                 <?php    
             }else{
-                $_SESSION['data'] = $_POST['data_agendamento'];
+                $_SESSION['dataAgendamento'] = $_POST['data_agendamento'];
                 echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
                     URL='http://localhost/Calendario/agendamentoFormulario.php'\">";
             }

@@ -1,11 +1,31 @@
 <?php
 
-class Servicos {
-    private $idServico;
+class Servicos_model {
+    private $idServicos;
     private $nomeServico;
-    private $valor;
+    private $valorServico;
     private $tempoServico;
 
+
+    /**
+     * Get the value of idServicos
+     */ 
+    public function getIdServicos()
+    {
+        return $this->idServicos;
+    }
+
+    /**
+     * Set the value of idServicos
+     *
+     * @return  self
+     */ 
+    public function setIdServicos($idServicos)
+    {
+        $this->idServicos = $idServicos;
+
+        return $this;
+    }
 
     /**
      * Get the value of nomeServico
@@ -28,21 +48,21 @@ class Servicos {
     }
 
     /**
-     * Get the value of valor
+     * Get the value of valorServico
      */ 
-    public function getValor()
+    public function getValorServico()
     {
-        return $this->valor;
+        return $this->valorServico;
     }
 
     /**
-     * Set the value of valor
+     * Set the value of valorServico
      *
      * @return  self
      */ 
-    public function setValor($valor)
+    public function setValorServico($valorServico)
     {
-        $this->valor = $valor;
+        $this->valorServico = $valorServico;
 
         return $this;
     }
@@ -63,26 +83,6 @@ class Servicos {
     public function setTempoServico($tempoServico)
     {
         $this->tempoServico = $tempoServico;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idServico
-     */ 
-    public function getIdServico()
-    {
-        return $this->idServico;
-    }
-
-    /**
-     * Set the value of idServico
-     *
-     * @return  self
-     */ 
-    public function setIdServico($idServico)
-    {
-        $this->idServico = $idServico;
 
         return $this;
     }
