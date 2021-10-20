@@ -78,13 +78,15 @@ nav{
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   background: transparent!important;
+  border: 2px solid #fff;
 
 }
 
 
 .btn11:hover{
   border: 1px solid transparent;
-  color: #000000!important;
+  color: #000!important;
+  border: 2px solid #000;
   
 }
 
